@@ -1,0 +1,18 @@
+CFLAGS = -g
+CC = cc
+OFILES = heap.o heapTest.o 
+target: dependencies
+heapTest: heap.c heap.h heapTest.cc
+all: heapTest
+heapTest: $(OFILES) 
+    $(CC) $(OFILES) -o $@  #placeholder
+    cc heap.o heapTest.o -o heapTest
+heap.o: heap.c heap.o 
+    cc -c -g heap.c  -o heap.o
+heapTest.o: heapTest.c heap.h 
+    cc -c -g heap.o  -o heapTest.o
+%.o: %.c heap.h 
+    $(CC) $(CFLAGS) -c $<
+
+clean:
+    rm -rf * .o * ~heapTest

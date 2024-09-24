@@ -9,7 +9,7 @@ void initVector(IntVector* vec, int cap)
   /*
   list->len = 0;TODO: The IntVector structure is already allocated in memory. You need to fill in the fields of it. For this, you'll need to allocate an array for cap integers.
    */
-  vec->numbers = (IntVector*)malloc(sizeof(IntVector*) * cap)
+  vec->numbers = (int*)malloc(sizeof(int) * cap);
   vec->size = 0;
   vec->capacity = cap;
 
@@ -64,7 +64,7 @@ void pushFrontVector(IntVector* vec, int number)
   }
 
   for (int i = vec->size; i<= 0; i--){
-    vec->numbers[i] = number[i-1];
+    vec->numbers[i] = vec->numbers[i-1];
   }
   vec->numbers[0] = number;
   /*
@@ -81,7 +81,7 @@ int popFrontVector(IntVector* vec)
    */
   int tempo = vec->numbers[0];
   for (int j = 1; j<=vec->size ;j++){
-    vec->numbers[i-1] = vec->numbers[i];
+    vec->numbers[j-1] = vec->numbers[j];
   }
   vec->size--;
   return tempo;
@@ -103,7 +103,7 @@ void sortVector(IntVector* vec)
    */
   for(int k = 1; k <=vec->size; k++){
     int key = vec->numbers[k];
-    int y = k - 1
+    int y = k - 1;
     while(y>=0 && vec->numbers[y]> key){
       vec->numbers[y+1] = vec->numbers[y];
       y--;
