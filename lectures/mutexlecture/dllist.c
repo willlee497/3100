@@ -111,7 +111,7 @@ void insertSortedList(DLList* list,int v) {
       
 
 void insertInListBehind(DLList* list,int key,int v) {
-   pthread_mutex_lock(&list->mtx);
+   pthread_mutex_lock(&list->mtx); //lock and use iterations
    DLNode* cur = list->head;
    while (cur && cur->value != key)      
       cur = cur->next;
