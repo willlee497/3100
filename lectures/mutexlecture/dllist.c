@@ -82,7 +82,7 @@ void insertSortedList(DLList* list,int v) {
          DLNode* prev = cur->prv;
          DLNode* nxt = cur;
          DLNode* nn = malloc(sizeof(DLNode));
-         pthread_mutex_init(&nn->mtx, NULL);
+         pthread_mutex_init(&nn->mtx, NULL); //initalize mutex
          nn->value = v;
          nn->prev = prev;
          nn->next = cur;
